@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Edition Performance Tweaks</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .tweak-section {
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tweak-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .tweak-details {
+            margin-left: 20px;
+        }
+
+        .code-snippet {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre;
+            font-family: monospace;
+        }
+
+        .tip {
+            background-color: #e0f7fa;
+            border-left: 5px solid #00bcd4;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .warning {
+            background-color: #ffe0b2;
+            border-left: 5px solid #ff9800;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .important {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            min-width: 600px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Java Edition Performance Tweaks</h1>
+
+    <div class="tweak-section">
+        <div class="tweak-header">Allocate More RAM</div>
+        <div class="tweak-details">
+            <p>Minecraft can benefit from having more RAM allocated to it. The default allocation is often insufficient, especially for modded gameplay or large worlds.</p>
+            <p><strong>How to:</strong></p>
+            <ol>
+                <li>Open the Minecraft Launcher.</li>
+                <li>Go to "Installations."</li>
+                <li>Select your desired installation and click "Edit."</li>
+                <li>Click "More Options."</li>
+                <li>In the "JVM Arguments" field, modify the <code>-Xmx</code> value. For example, <code>-Xmx8G</code> allocates 8 gigabytes of RAM.</li>
+                <li>Save the changes.</li>
+            </ol>
+            <div class="warning">
+                <p><strong>Warning:</strong> Do not allocate more RAM than your system has available. Allocating too much can lead to system instability.</p>
+            </div>
+            <div class="tip">
+              <p>Allocate roughly half of your available ram. For example, if you have 16GB of ram, allocate 8.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="tweak-section">
+        <div class="tweak-header">Optimize Video Settings</div>
+        <div class="tweak-details">
+            <p>Adjusting video settings can significantly impact performance.</p>
+            <div class="table-container">
+            <table>
+                <tr>
+                    <th>Setting</th>
+                    <th>Impact</th>
+                    <th>Recommendation</th>
+                </tr>
+                <tr>
+                    <td>Render Distance</td>
+                    <td>High</td>
+                    <td>Reduce to 8-12 chunks for better performance.</td>
+                </tr>
+                <tr>
+                    <td>Graphics</td>
+                    <td>Medium</td>
+                    <td>Set to "Fast" instead of "Fancy."</td>
+                </tr>
+                <tr>
+                    <td>Smooth Lighting</td>
+                    <td>Medium</td>
+                    <td>Turn off or set to "Minimum."</td>
+                </tr>
+                <tr>
+                    <td>Particles</td>
+                    <td>Medium</td>
+                    <td>Set to "Minimal" or "Decreased."</td>
+                </tr>
+                <tr>
+                    <td>Entity Shadows</td>
+                    <td>Medium</td>
+                    <td>Turn off.</td>
+                </tr>
+                <tr>
+                  <td>Fullscreen</td>
+                  <td>Low</td>
+                  <td>Fullscreen mode can sometimes improve performance.</td>
+                </tr>
+                <tr>
+                  <td>VSync</td>
+                  <td>Low</td>
+                  <td>Turning off VSync may increase FPS, but can cause screen tearing.</td>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="tweak-section">
+        <div class="tweak-header">Use Performance Mods</div>
+        <div class="tweak-details">
+            <p>Performance mods can significantly improve FPS and reduce lag.</p>
+            <p><strong>Recommended Mods:</strong></p>
+            <ul>
+                <li>Sodium (Fabric): A modern rendering engine that significantly improves FPS.</li>
+                <li>Lithium (Fabric): Optimizes game logic without changing gameplay.</li>
+                <li>Starlight (Fabric): Optimizes the lighting engine.</li>
+                <li>OptiFine (Forge/Standalone): A popular optimization mod with many settings. (Sodium is generally better)</li>
+                <li>FerriteCore (Fabric): Reduces RAM usage.</li>
+            </ul>
+            <div class="tip">
+              <p>For best results, use Fabric and Sodium, Lithium, and Starlight. Forge is an older mod loader, and Optifine, while useful, is less optimized than the Fabric alternatives. </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="tweak-section">
+        <div class="tweak-header">Update Java and Graphics Drivers</div>
+        <div class="tweak-details">
+            <p>Ensure you are using the latest version of Java and your graphics drivers.</p>
+            <ul>
+                <li><strong>Java:</strong> Download the latest Java SE Development Kit (JDK) from Oracle or Adoptium.</li>
+                <li><strong>Graphics Drivers:</strong> Update your drivers from the manufacturer's website (NVIDIA, AMD, Intel).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tweak-section">
+      <div class="tweak-header">Reduce Background Processes</div>
+      <div class="tweak-details">
+        <p>Close unnecessary applications and background processes to free up system resources.</p>
+        <ul>
+          <li>Use Task Manager (Windows) or Activity Monitor (macOS) to identify and close resource-intensive applications.</li>
+          <li>Disable startup programs that you don't need.</li>
+        </ul>
+      </div>
+    </div>
+
+</body>
+</html>
